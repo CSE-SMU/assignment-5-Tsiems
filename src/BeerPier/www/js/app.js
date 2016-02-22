@@ -36,38 +36,59 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/search',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/search.html',
+        controller: 'AppCtrl'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+  .state('app.results', {
+    url: '/results',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/results.html',
+        controller: 'AppCtrl'
       }
     }
-  });
+  })
+
+  .state('app.details', {
+    url: '/details',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/details.html',
+        controller: 'AppCtrl'
+      }
+    }
+  })
+
+  // .state('app.browse', {
+  //     url: '/browse',
+  //     views: {
+  //       'menuContent': {
+  //         templateUrl: 'templates/browse.html'
+  //       }
+  //     }
+  //   })
+  //   .state('app.playlists', {
+  //     url: '/playlists',
+  //     views: {
+  //       'menuContent': {
+  //         templateUrl: 'templates/playlists.html',
+  //         controller: 'PlaylistsCtrl'
+  //       }
+  //     }
+  //   })
+  //
+  // .state('app.single', {
+  //   url: '/playlists/:playlistId',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/playlist.html',
+  //       controller: 'PlaylistCtrl'
+  //     }
+  //   }
+  // });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/search');
 });
