@@ -4,7 +4,7 @@
     <div class="list">
       <label class="item item-input">
         <span class="input-label">Beer Name</span>
-        <input type="text" placeholder="Search by Beer Name">
+        <input type="text" placeholder="Search by Beer Name" ng-model="search.name">
       </label>
       <!-- <label class="item item-input item-select">
         <div class="input-label">
@@ -19,12 +19,18 @@
 
       <div class="item item-input">
         <span class="input-label">IBU</span>
-        <input type="tel" placeholder="IBU">
+        <a class="icon placeholder-icon" ng-click="search.ibuGreater = !search.ibuGreater">
+          {{search.ibuGreater ? ">=" : "<="}}
+        </a>
+        <input type="tel" placeholder="IBU" ng-model="ibu">
       </div>
 
       <div class="item item-input">
         <span class="input-label">Alcohol Content (%)</span>
-        <input type="tel" placeholder="Alcohol Content">
+        <a class="icon placeholder-icon" ng-click="search.abvGreater = !search.abvGreater">
+          {{search.abvGreater ? ">=" : "<="}}
+        </a>
+        <input type="tel" placeholder="Alcohol Content" ng-model="search.abv">
       </div>
 
       <label class="item item-input item-select">

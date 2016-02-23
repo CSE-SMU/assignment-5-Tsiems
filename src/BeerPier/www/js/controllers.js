@@ -1,11 +1,54 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $state) {
+.controller('AppCtrl', function($scope, $state, $http) {
+  $scope.organicChoices = ["Any", "Yes", "No"];
+  $scope.organic = {};
+  $scope.organic.index = 0;
+
+  $scope.search = {};
+  $scope.search.name = "";
+  $scope.search.abv = "";
+  $scope.search.ibu = "";
+
+  $scope.search.abvGreater = true;
+  $scope.search.ibuGreater = true;
+
+  $scope.beers = {};
+  $scope.beers.beers = [5,7,8];
+  console.log($scope.beers.beers);
+  console.log("reset");
+
   $scope.getBeer = function() {
     var data = {
-      key: '77b766eded59b064556e04a254bc521c',
-      ibu: '+50'
+      key: '77b766eded59b064556e04a254bc521c'
     };
+
+    console.log($scope.search.name);
+    if( $scope.search.name ) {
+      data.name = $scope.search.name;
+    }
+    if( $scope.search.abv ) {
+      var direction = "+";
+      if( !$scope.search.abvGreater ) {
+        direction = "-";
+      }
+      data.abv = direction + $scope.search.abv;
+    }
+    if( $scope.search.ibu ) {
+      var direction = "+";
+      if( !$scope.search.abvGreater ) {
+        direction = "-";
+      }
+      data.ibu = direction + $scope.search.ibu;
+    }
+    if( $scope.organic.index ) {
+      if( $scope.organic.index == 1) {
+        data.isOrganic = "Y";
+      }
+      else {
+        data.isOrganic = "N";
+      }
+    }
 
     $http({
       method: 'GET',
@@ -13,6 +56,12 @@ angular.module('starter.controllers', [])
       params: data
     }).then(function successCallback(response) {
         console.log(response);
+        console.log(data);
+
+        console.log(response.data.data);
+        console.log(angular.isArray($scope.beers.beers));
+        $scope.beers.beers = response.data;
+        console.log(angular.isArray($scope.beers.beers));
 
         // $scope.beername = response.data[0].name;
       }, function errorCallback(response) {
@@ -23,13 +72,12 @@ angular.module('starter.controllers', [])
 
   $scope.getResults = function() {
     console.log("Woohoo!");
-    console.log($scope.organic);
+    console.log($scope.organicChoices[$scope.organic.index]);
+    $scope.getBeer();
     $state.go('app.results');
   };
 
-  $scope.organicChoices = ["Any", "Yes", "No"];
-  $scope.organic = {};
-  $scope.organic.index = 0;
+
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
