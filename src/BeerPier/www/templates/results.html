@@ -2,12 +2,20 @@
   <ion-content>
     <h1>Results</h1>
 
+    <style>
+      h2 {
+          color: #CDCDCD;
+          text-shadow: 1px 1px #000000;
+      }
+    </style>
+
     <div class="list">
 
-      <a class="item item-thumbnail-left" href="#/app/details" collection-repeat="beer in beers.beers">
-        <img src="../img/earth-thumbnail-small.jpg">
-        <h2>Beer Name</h2>
-        <p>Alcohol %</p>
+      <a class="item item-thumbnail-left" href="#/app/beer/{{$index}}"
+          collection-repeat="beer in beers.data" ng-style="srmColor(beer.style.srmMin)">
+        <img src={{beer.labels.icon}}>
+        <h2>{{beer.name}}</h2>
+        <p>{{beer.abv}}% ABV</p>
       </a>
 
 

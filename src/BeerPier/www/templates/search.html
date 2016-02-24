@@ -1,10 +1,9 @@
 <ion-view view-title="Beer Search">
   <ion-content>
-    <h1>Beer Search</h1>
     <div class="list">
       <label class="item item-input">
         <span class="input-label">Beer Name</span>
-        <input type="text" placeholder="Search by Beer Name" ng-model="search.name">
+        <input type="text" placeholder="ex. Stout, Lager, Saison" ng-model="search.beername">
       </label>
       <!-- <label class="item item-input item-select">
         <div class="input-label">
@@ -22,7 +21,7 @@
         <a class="icon placeholder-icon" ng-click="search.ibuGreater = !search.ibuGreater">
           {{search.ibuGreater ? ">=" : "<="}}
         </a>
-        <input type="tel" placeholder="IBU" ng-model="ibu">
+        <input type="tel" placeholder="ex. 20" ng-model="ibu">
       </div>
 
       <div class="item item-input">
@@ -30,7 +29,7 @@
         <a class="icon placeholder-icon" ng-click="search.abvGreater = !search.abvGreater">
           {{search.abvGreater ? ">=" : "<="}}
         </a>
-        <input type="tel" placeholder="Alcohol Content" ng-model="search.abv">
+        <input type="tel" placeholder="ex. 12" ng-model="search.abv">
       </div>
 
       <label class="item item-input item-select">
@@ -41,10 +40,22 @@
             ng-options="organicChoices.indexOf(item) as item for item in organicChoices">
         </select>
       </label>
+
+      <label class="item item-input">
+        <div class="input-label">
+          Year
+        </div>
+        <input type="tel" placeholder="ex. 2015" ng-model="search.year">
+      </label>
     </div>
 
-    <button class="button button-positive button-block" on-tap="getResults()">
+    <button class="button button-positive button-block" ng-click="search()">
       Submit
     </button>
   </ion-content>
+  <!-- <div class="bar bar-footer bar-balancedbutton button-positive button-block">
+    <button class="" on-tap="getResults()">
+      Submit
+    </button>
+  </div> -->
 </ion-view>
