@@ -17,20 +17,22 @@
       </label> -->
 
       <div class="item item-input">
+        <span class="input-label">ABV (%)</span>
+        <a class="icon placeholder-icon" ng-click="search.abvGreater = !search.abvGreater">
+          {{search.abvGreater ? ">=" : "<="}} &nbsp;
+        </a>
+        <input type="tel" placeholder="ex. 12" ng-model="search.abv">
+      </div>
+
+      <div class="item item-input">
         <span class="input-label">IBU</span>
         <a class="icon placeholder-icon" ng-click="search.ibuGreater = !search.ibuGreater">
-          {{search.ibuGreater ? ">=" : "<="}}
+          {{search.ibuGreater ? ">=" : "<="}} &nbsp;
         </a>
         <input type="tel" placeholder="ex. 20" ng-model="ibu">
       </div>
 
-      <div class="item item-input">
-        <span class="input-label">Alcohol Content (%)</span>
-        <a class="icon placeholder-icon" ng-click="search.abvGreater = !search.abvGreater">
-          {{search.abvGreater ? ">=" : "<="}}
-        </a>
-        <input type="tel" placeholder="ex. 12" ng-model="search.abv">
-      </div>
+
 
       <label class="item item-input item-select">
         <div class="input-label">
